@@ -16,29 +16,57 @@
         <div id="quiz">
             <div class="question" id="q1">
                 <p>Do you want to spend money today?</p>
-                <button onclick="nextQuestion(1, 'budget', 'Yes')">Yes</button>
-                <button onclick="nextQuestion(1, 'budget', 'No')">No</button>
+                <button onclick="nextQuestion(1, 'budget', 'Yes')">Yes, let's splurge!</button>
+                <button onclick="nextQuestion(1, 'budget', 'No')">No, let's keep it budget-friendly.</button>
             </div>
             <div class="question" id="q2">
                 <p>How far do you want to go?</p>
-                <button onclick="nextQuestion(2, 'distance', 'Near')">Near</button>
-                <button onclick="nextQuestion(2, 'distance', 'Far')">Far</button>
+                <button onclick="nextQuestion(2, 'distance', 'Nearby')">Somewhere nearby</button>
+                <button onclick="nextQuestion(2, 'distance', 'Far')">Let's go on a long trip</button>
             </div>
             <div class="question" id="q3">
-                <p>Do you have a scooter with you?</p>
-                <button onclick="nextQuestion(3, 'transport', 'Scooter')">Yes</button>
-                <button onclick="nextQuestion(3, 'transport', 'Metro')">No, need metro</button>
+                <p>What's your travel option?</p>
+                <button onclick="nextQuestion(3, 'transport', 'Scooter')">I have a scooter</button>
+                <button onclick="nextQuestion(3, 'transport', 'Metro')">Need to take metro</button>
+                <button onclick="nextQuestion(3, 'transport', 'Walk')">Walking distance only</button>
             </div>
             <div class="question" id="q4">
                 <p>How are you feeling today?</p>
-                <button onclick="nextQuestion(4, 'mood', 'Relaxed')">Relaxed</button>
-                <button onclick="nextQuestion(4, 'mood', 'Adventurous')">Adventurous</button>
+                <button onclick="nextQuestion(4, 'mood', 'Relaxed')">Relaxed and busy</button>
+                <button onclick="nextQuestion(4, 'mood', 'Adventurous')">Adventurous and energetic</button>
+                <button onclick="nextQuestion(4, 'mood', 'Romantic')">Romantic and cozy</button>
+                <button onclick="nextQuestion(4, 'mood', 'Excited')">Excited to do something new</button>
+            </div>
+            <div class="question" id="q5">
+                <p>What kind of vibe are you looking for?</p>
+                <button onclick="nextQuestion(5, 'vibe', 'Musical')">A musical or artsy experience</button>
+                <button onclick="nextQuestion(5, 'vibe', 'Food')">A food-related adventure</button>
+                <button onclick="nextQuestion(5, 'vibe', 'Outdoors')">Something outdoorsy</button>
+                <button onclick="nextQuestion(5, 'vibe', 'Fun')">Something fun</button>
+                <button onclick="nextQuestion(5, 'vibe', 'Peaceful')">Something peaceful</button>
+            </div>
+            <div class="question" id="q6">
+                <p>Outfit consideration?</p>
+                <button onclick="nextQuestion(6, 'outfit', 'Casual')">Casual and relaxed</button>
+                <button onclick="nextQuestion(6, 'outfit', 'DressedUp')">All dressed up</button>
+            </div>
+            <div class="question" id="q7">
+                <p>What food are you craving?</p>
+                <button onclick="nextQuestion(7, 'food', 'Junk')">Junk food or snacks</button>
+                <button onclick="nextQuestion(7, 'food', 'Healthy')">Something healthy</button>
+                <button onclick="nextQuestion(7, 'food', 'Exotic')">Exotic new flavors</button>
+                <button onclick="nextQuestion(7, 'food', 'IceCream')">Ice cream</button>
+                <button onclick="nextQuestion(7, 'food', 'Momos')">Momos</button>
+            </div>
+            <div class="question" id="q8">
+                <p>Want to let fate decide?</p>
+                <button onclick="nextQuestion(8, 'surprise', 'Yes')">Yes, surprise me!</button>
+                <button onclick="nextQuestion(8, 'surprise', 'No')">No, let’s be specific</button>
             </div>
         </div>
         <div class="result" id="result"></div>
     </div><script>
     let answers = {};
-    let currentQuestion = 1;
     
     function nextQuestion(qNum, key, value) {
         answers[key] = value;
@@ -52,17 +80,9 @@
     }
     
     function showResult() {
-        let resultText = "";
-        if (answers.budget === "No" && answers.distance === "Near") {
-            resultText = "Let's have a cozy home date with a movie and snacks! 🍿🎬";
-        } else if (answers.budget === "Yes" && answers.transport === "Scooter") {
-            resultText = "Let's go to a fancy café and explore the city! ☕🏙️";
-        } else if (answers.mood === "Adventurous") {
-            resultText = "How about a fun amusement park or an escape room? 🎢🔍";
-        } else {
-            resultText = "A peaceful park picnic sounds perfect! 🌳🍎";
-        }
-        document.getElementById("result").innerText = resultText;
+        let locations = ["Hill Palace", "Shopping", "Fort Kochi", "Marine Drive", "Aluva Palam", "Paul's Creamery", "Aluva Manpuram", "Temple Date", "Lulu Mall", "Movie Date", "Caravan Ice Cream", "Mattanchery", "Beach", "Kadamakudy", "Coca Tree MG Road Cakes", "Café de Bangkok Thai", "Pandel Café and Deli", "David Hall Art Gallery", "Happy Cup Heritage Kaloor", "Westleys"];
+        let chosenLocation = answers.surprise === "Yes" ? locations[Math.floor(Math.random() * locations.length)] : locations[0];
+        document.getElementById("result").innerText = `Your perfect date is: ${chosenLocation}! ❤️`;
         document.getElementById("result").style.display = "block";
     }
     
