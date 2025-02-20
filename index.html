@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Picker Quiz</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .container { max-width: 600px; margin: auto; }
+        .question { display: none; }
+        .result { display: none; font-size: 20px; font-weight: bold; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Plan Our Date! 💖</h1>
+        <div id="quiz">
+            <div class="question" id="q1">
+                <p>Do you want to spend money today?</p>
+                <button onclick="nextQuestion(1, 'budget', 'Yes')">Yes</button>
+                <button onclick="nextQuestion(1, 'budget', 'No')">No</button>
+            </div>
+            <div class="question" id="q2">
+                <p>How far do you want to go?</p>
+                <button onclick="nextQuestion(2, 'distance', 'Near')">Near</button>
+                <button onclick="nextQuestion(2, 'distance', 'Far')">Far</button>
+            </div>
+            <div class="question" id="q3">
+                <p>Do you have a scooter with you?</p>
+                <button onclick="nextQuestion(3, 'transport', 'Scooter')">Yes</button>
+                <button onclick="nextQuestion(3, 'transport', 'Metro')">No, need metro</button>
+            </div>
+            <div class="question" id="q4">
+                <p>How are you feeling today?</p>
+                <button onclick="nextQuestion(4, 'mood', 'Relaxed')">Relaxed</button>
+                <button onclick="nextQuestion(4, 'mood', 'Adventurous')">Adventurous</button>
+            </div>
+        </div>
+        <div class="result" id="result"></div>
+    </div><script>
+    let answers = {};
+    let currentQuestion = 1;
+    
+    function nextQuestion(qNum, key, value) {
+        answers[key] = value;
+        document.getElementById(`q${qNum}`).style.display = "none";
+        let nextQ = document.getElementById(`q${qNum + 1}`);
+        if (nextQ) {
+            nextQ.style.display = "block";
+        } else {
+            showResult();
+        }
+    }
+    
+    function showResult() {
+        let resultText = "";
+        if (answers.budget === "No" && answers.distance === "Near") {
+            resultText = "Let's have a cozy home date with a movie and snacks! 🍿🎬";
+        } else if (answers.budget === "Yes" && answers.transport === "Scooter") {
+            resultText = "Let's go to a fancy café and explore the city! ☕🏙️";
+        } else if (answers.mood === "Adventurous") {
+            resultText = "How about a fun amusement park or an escape room? 🎢🔍";
+        } else {
+            resultText = "A peaceful park picnic sounds perfect! 🌳🍎";
+        }
+        document.getElementById("result").innerText = resultText;
+        document.getElementById("result").style.display = "block";
+    }
+    
+    document.getElementById("q1").style.display = "block";
+</script>
+
+</body>
+</html>
