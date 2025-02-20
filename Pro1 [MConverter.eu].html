@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 7.6.4.1 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="00:00:00"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { line-height: 115%; margin-bottom: 0.1in; background: transparent }
+		pre { background: transparent }
+		pre.western { font-family: "Liberation Mono", monospace; font-size: 10pt }
+		pre.cjk { font-family: "NSimSun", monospace; font-size: 10pt }
+		pre.ctl { font-family: "Liberation Mono", monospace; font-size: 10pt }
+	</style>
+</head>
+<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre class="western">&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Date Picker Quiz&lt;/title&gt;
+    &lt;style&gt;
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .container { max-width: 600px; margin: auto; }
+        .question { display: none; }
+        .result { display: none; font-size: 20px; font-weight: bold; margin-top: 20px; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;container&quot;&gt;
+        &lt;h1&gt;Plan Our Date! 💖&lt;/h1&gt;
+        &lt;div id=&quot;quiz&quot;&gt;
+            &lt;div class=&quot;question&quot; id=&quot;q1&quot;&gt;
+                &lt;p&gt;Do you want to spend money today?&lt;/p&gt;
+                &lt;button onclick=&quot;nextQuestion(1, 'budget', 'Yes')&quot;&gt;Yes&lt;/button&gt;
+                &lt;button onclick=&quot;nextQuestion(1, 'budget', 'No')&quot;&gt;No&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;question&quot; id=&quot;q2&quot;&gt;
+                &lt;p&gt;How far do you want to go?&lt;/p&gt;
+                &lt;button onclick=&quot;nextQuestion(2, 'distance', 'Near')&quot;&gt;Near&lt;/button&gt;
+                &lt;button onclick=&quot;nextQuestion(2, 'distance', 'Far')&quot;&gt;Far&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;question&quot; id=&quot;q3&quot;&gt;
+                &lt;p&gt;Do you have a scooter with you?&lt;/p&gt;
+                &lt;button onclick=&quot;nextQuestion(3, 'transport', 'Scooter')&quot;&gt;Yes&lt;/button&gt;
+                &lt;button onclick=&quot;nextQuestion(3, 'transport', 'Metro')&quot;&gt;No, need metro&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;question&quot; id=&quot;q4&quot;&gt;
+                &lt;p&gt;How are you feeling today?&lt;/p&gt;
+                &lt;button onclick=&quot;nextQuestion(4, 'mood', 'Relaxed')&quot;&gt;Relaxed&lt;/button&gt;
+                &lt;button onclick=&quot;nextQuestion(4, 'mood', 'Adventurous')&quot;&gt;Adventurous&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;result&quot; id=&quot;result&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;&lt;script&gt;
+    let answers = {};
+    let currentQuestion = 1;
+    
+    function nextQuestion(qNum, key, value) {
+        answers[key] = value;
+        document.getElementById(`q${qNum}`).style.display = &quot;none&quot;;
+        let nextQ = document.getElementById(`q${qNum + 1}`);
+        if (nextQ) {
+            nextQ.style.display = &quot;block&quot;;
+        } else {
+            showResult();
+        }
+    }
+    
+    function showResult() {
+        let resultText = &quot;&quot;;
+        if (answers.budget === &quot;No&quot; &amp;&amp; answers.distance === &quot;Near&quot;) {
+            resultText = &quot;Let's have a cozy home date with a movie and snacks! 🍿🎬&quot;;
+        } else if (answers.budget === &quot;Yes&quot; &amp;&amp; answers.transport === &quot;Scooter&quot;) {
+            resultText = &quot;Let's go to a fancy café and explore the city! ☕🏙️&quot;;
+        } else if (answers.mood === &quot;Adventurous&quot;) {
+            resultText = &quot;How about a fun amusement park or an escape room? 🎢🔍&quot;;
+        } else {
+            resultText = &quot;A peaceful park picnic sounds perfect! 🌳🍎&quot;;
+        }
+        document.getElementById(&quot;result&quot;).innerText = resultText;
+        document.getElementById(&quot;result&quot;).style.display = &quot;block&quot;;
+    }
+    
+    document.getElementById(&quot;q1&quot;).style.display = &quot;block&quot;;
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+</body>
+</html>
